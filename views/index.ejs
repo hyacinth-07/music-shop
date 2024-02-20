@@ -1,1 +1,9 @@
-<p>Here there would be some content</p>
+<p>A list of all the categories of instruments present in the database</p>
+
+<% if (cat_list.length) { %>
+<ul>
+	<% cat_list.forEach(function (elem) { %>
+	<li><a href="<%= elem.url %>"><%= elem.name %></a></li>
+	<% }) %>
+</ul>
+<% } %>

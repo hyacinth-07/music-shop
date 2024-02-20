@@ -11,3 +11,20 @@ exports.index = asyncHandler(async (req, res, next) => {
 		cat_list: allCategories,
 	});
 });
+
+exports.detail = asyncHandler(async (req, res, next) => {
+	const cat = await Category.findById(req.params.id).exec();
+
+	if (cat === null) {
+		// No results.
+		const err = new Error('Category not found');
+		err.status = 404;
+		return next(err);
+	}
+
+	res.render('main', {
+		template: 'cat_detail',
+		title: 'Categories Detail',
+		cat: cat,
+	});
+});
