@@ -6,7 +6,7 @@ const TypeSchema = new Schema({
 });
 
 TypeSchema.virtual('url').get(function () {
-	return `/store/${this._id}`;
+	return `/store/types/${this._id}`;
 });
 
 module.exports = mongoose.model('Type', TypeSchema);

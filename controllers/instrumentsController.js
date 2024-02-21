@@ -11,3 +11,23 @@ exports.list = asyncHandler(async (req, res, next) => {
 		inst_list: allInstruments,
 	});
 });
+
+exports.detail = asyncHandler(async (req, res, next) => {
+	const inst = await Instrument.findById(req.params.id)
+		.populate('category')
+		.populate('type')
+		.exec();
+
+	if (inst === null) {
+		// No results.
+		const err = new Error('Instrument not found');
+		err.status = 404;
+		return next(err);
+	}
+
+	res.render('main', {
+		template: 'inst_detail',
+		title: 'Instrument Detail',
+		inst: inst,
+	});
+});

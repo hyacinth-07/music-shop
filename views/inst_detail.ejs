@@ -1,0 +1,18 @@
+<h4><%= inst.name %></h4>
+<p>ID: <%= inst._id %></p>
+
+<ul>
+	<li>
+		<a href="<%= inst.category[0].url %>"><%= inst.category[0].name %></a>
+	</li>
+	<li>
+		<a href="<%= inst.type[0].url %>"><%= inst.type[0].name %></a>
+	</li>
+	<li><%= inst.brand %></li>
+	<li><%= inst.description %></li>
+	<li><%= inst.price %>€</li>
+	<li>Available: <strong><%= inst.inStock %></strong></li>
+	<% if (inst.inStock === "No") { %>
+	<li>Back due: <%= inst.backInStock %></li>
+	<% } %>
+</ul>

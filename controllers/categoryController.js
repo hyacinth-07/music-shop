@@ -1,4 +1,5 @@
 const Category = require('../models/category');
+const Instrument = require('../models/instruments');
 
 const asyncHandler = require('express-async-handler');
 
@@ -13,7 +14,10 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 exports.detail = asyncHandler(async (req, res, next) => {
-	const cat = await Category.findById(req.params.id).exec();
+	const [cat, inst] = await Promise.all([
+		Category.findById(req.params.id).exec(),
+		Instrument.find({ category: req.params.id }, 'name').exec(),
+	]);
 
 	if (cat === null) {
 		// No results.
@@ -26,5 +30,6 @@ exports.detail = asyncHandler(async (req, res, next) => {
 		template: 'cat_detail',
 		title: 'Categories Detail',
 		cat: cat,
+		inst: inst,
 	});
 });
