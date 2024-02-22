@@ -9,27 +9,40 @@ const inst_ctrl = require('../controllers/instrumentsController');
 
 // CATEGORY ROUTES
 
+// TYPES
+
 // display all types
 router.get('/types', type_ctrl.list);
 
 // detail type
-
 router.get('/types/:id', type_ctrl.detail);
 
-// display all instruments
+// INSTRUMENTS
 
+// display all instruments
 router.get('/instruments', inst_ctrl.list);
 
 // detail instruments
-
 router.get('/instruments/:id', inst_ctrl.detail);
 
-// display category detail page
+// CATEGORIES
 
+// display category detail page
 router.get('/:id', cat_ctrl.detail);
 
-// display all categories, main index
+// create category GET
+router.get('/create/category', cat_ctrl.create_get);
 
+// create category POST
+router.post('/create/category', cat_ctrl.create_post);
+
+// update category
+// router.get('/:id/update', cat_ctrl.update);
+
+// delete category
+// router.get('/:id/delete', cat_ctrl.delete);
+
+// display all categories, main index
 router.get('/', cat_ctrl.index);
 
 module.exports = router;

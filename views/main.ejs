@@ -7,10 +7,33 @@
 	</head>
 	<body>
 		<h1><%= title %></h1>
-		<div>
+		<div
+			style="
+				border: black 1px solid;
+				padding: 5px;
+				margin-bottom: 5px;
+				display: flex;
+				gap: 15px;
+				width: fit-content;
+			"
+		>
 			<a href="/store">Home</a>
 			<a href="/store/types">All Types</a>
 			<a href="/store/instruments">All Instruments</a>
+		</div>
+		<div
+			style="
+				border: black 1px solid;
+				padding: 5px;
+				margin-bottom: 5px;
+				display: flex;
+				gap: 15px;
+				width: fit-content;
+			"
+		>
+			<a href="/store/create/category">Create New Category</a>
+			<a href="/store/create/type">Create New Type</a>
+			<a href="/store/create/instrument">Create New Instrument</a>
 		</div>
 		<div><%- include(template); -%></div>
 	</body>
