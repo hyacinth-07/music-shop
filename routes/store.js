@@ -17,6 +17,18 @@ router.get('/types', type_ctrl.list);
 // detail type
 router.get('/types/:id', type_ctrl.detail);
 
+// create type GET
+router.get('/create/type', type_ctrl.create_get);
+
+// create type POST
+router.post('/create/type', type_ctrl.create_post);
+
+// delete category GET
+router.get('/types/:id/delete', type_ctrl.delete_get);
+
+// delete category POST
+router.post('/types/:id/delete', type_ctrl.delete_post);
+
 // INSTRUMENTS
 
 // display all instruments

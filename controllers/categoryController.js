@@ -105,7 +105,7 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 	if (inst.length > 0) {
 		res.render('layout', {
 			template: 'cat_delete',
-			title: 'Category Genre',
+			title: 'Category Delete',
 			cat: cat,
 			inst: inst,
 		});
