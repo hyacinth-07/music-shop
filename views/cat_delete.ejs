@@ -1,0 +1,20 @@
+<p>Do you really want to delete <strong><%= cat.name %></strong> ???</p>
+
+<% if (inst.length) { %>
+<p>Delete these instruments first:</p>
+
+<ul>
+	<% inst.forEach(function(elem) { %>
+	<li><a href="<%= elem.url %>"> <%= elem.name %></a></li>
+	<% }) %>
+</ul>
+<% } else { %>
+<p>You're good to go.</p>
+
+<form method="post">
+	<div>
+		<input type="hidden" id="id" name="id" value="<%= cat._id %>" />
+	</div>
+	<button type="submit">Delete Category</button>
+</form>
+<% } %>

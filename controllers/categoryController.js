@@ -77,3 +77,41 @@ exports.create_post = [
 		}
 	}),
 ];
+
+exports.delete_get = asyncHandler(async (req, res, next) => {
+	const [cat, inst] = await Promise.all([
+		Category.findById(req.params.id).exec(),
+		Instrument.find({ category: req.params.id }, 'name').exec(),
+	]);
+
+	if (cat === null) {
+		res.redirect('/');
+	}
+
+	res.render('main', {
+		template: 'cat_delete',
+		title: 'Category Delete',
+		cat: cat,
+		inst: inst,
+	});
+});
+
+exports.delete_post = asyncHandler(async (req, res, next) => {
+	const [cat, inst] = await Promise.all([
+		Category.findById(req.params.id).exec(),
+		Instrument.find({ category: req.params.id }, 'name').exec(),
+	]);
+
+	if (inst.length > 0) {
+		res.render('layout', {
+			template: 'cat_delete',
+			title: 'Category Genre',
+			cat: cat,
+			inst: inst,
+		});
+		return;
+	} else {
+		await Category.findByIdAndDelete(req.body.id);
+		res.redirect('/');
+	}
+});

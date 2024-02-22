@@ -36,11 +36,11 @@ router.get('/create/category', cat_ctrl.create_get);
 // create category POST
 router.post('/create/category', cat_ctrl.create_post);
 
-// update category
-// router.get('/:id/update', cat_ctrl.update);
+// delete category GET
+router.get('/:id/delete', cat_ctrl.delete_get);
 
-// delete category
-// router.get('/:id/delete', cat_ctrl.delete);
+// delete category POST
+router.post('/:id/delete', cat_ctrl.delete_post);
 
 // display all categories, main index
 router.get('/', cat_ctrl.index);
