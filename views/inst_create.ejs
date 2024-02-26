@@ -1,0 +1,52 @@
+<form method="post" style="display: flex; gap: 5px; flex-direction: column">
+	<div>
+		<label for="name">Name: </label>
+		<input type="text" name="name" id="name" required />
+	</div>
+	<div>
+		<label for="category">Category: </label>
+		<select name="category" id="category" required>
+			<option value="">-- Select an Category --</option>
+			<% allCat.forEach(function (elem) { %>
+			<option value="<%= elem._id %>"><%= elem.name %></option>
+			<% }) %>
+		</select>
+	</div>
+	<div>
+		<label for="type">Type: </label>
+		<select name="type" id="type" required>
+			<option value="">-- Select an Type --</option>
+			<% allTypes.forEach(function (elem) { %>
+			<option value="<%= elem._id %>"><%= elem.name %></option>
+			<% }) %>
+		</select>
+	</div>
+	<div>
+		<label for="brand">Brand: </label>
+		<input type="text" name="brand" id="brand" />
+	</div>
+	<div>
+		<label for="description" style="vertical-align: top">Description: </label>
+		<textarea name="description" id="description" cols="25" rows="5"></textarea>
+	</div>
+	<div>
+		<label for="price">Price: </label>
+		<input type="number" name="price" id="price" min="0" required />
+	</div>
+	<fieldset style="width: fit-content">
+		<legend>Is it in stock?</legend>
+		<div>
+			<input type="radio" name="inStock" id="inStockYes" value="Yes" checked />
+			<label for="inStockYes">Yes</label>
+		</div>
+		<div>
+			<input type="radio" name="inStock" id="inStockNo" value="No" />
+			<label for="inStockNo">No</label>
+		</div>
+	</fieldset>
+	<div>
+		<label for="backInStock">Date when available: </label>
+		<input type="date" id="backInStock" name="backInStock" />
+	</div>
+	<button type="submit" style="width: fit-content">Submit</button>
+</form>

@@ -37,6 +37,12 @@ router.get('/instruments', inst_ctrl.list);
 // detail instruments
 router.get('/instruments/:id', inst_ctrl.detail);
 
+// create instrument GET
+router.get('/create/instrument', inst_ctrl.create_get);
+
+// create instrument POST
+router.post('/create/instrument', inst_ctrl.create_post);
+
 // delete instrument GET
 router.get('/instruments/:id/delete', inst_ctrl.delete_get);
 
