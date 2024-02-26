@@ -7,7 +7,7 @@ const cat_ctrl = require('../controllers/categoryController');
 const type_ctrl = require('../controllers/typeController');
 const inst_ctrl = require('../controllers/instrumentsController');
 
-// CATEGORY ROUTES
+// ROUTES
 
 // TYPES
 
@@ -23,10 +23,10 @@ router.get('/create/type', type_ctrl.create_get);
 // create type POST
 router.post('/create/type', type_ctrl.create_post);
 
-// delete category GET
+// delete type GET
 router.get('/types/:id/delete', type_ctrl.delete_get);
 
-// delete category POST
+// delete type POST
 router.post('/types/:id/delete', type_ctrl.delete_post);
 
 // INSTRUMENTS
@@ -36,6 +36,12 @@ router.get('/instruments', inst_ctrl.list);
 
 // detail instruments
 router.get('/instruments/:id', inst_ctrl.detail);
+
+// delete instrument GET
+router.get('/instruments/:id/delete', inst_ctrl.delete_get);
+
+// delete instrument POST
+router.post('/instruments/:id/delete', inst_ctrl.delete_post);
 
 // CATEGORIES
 

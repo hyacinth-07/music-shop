@@ -31,3 +31,22 @@ exports.detail = asyncHandler(async (req, res, next) => {
 		inst: inst,
 	});
 });
+
+exports.delete_get = asyncHandler(async (req, res, next) => {
+	const inst = await Instrument.findById(req.params.id).exec();
+
+	if (inst === null) {
+		res.redirect('/instruments');
+	}
+
+	res.render('main', {
+		template: 'inst_delete',
+		title: 'Instrument Delete',
+		inst: inst,
+	});
+});
+
+exports.delete_post = asyncHandler(async (req, res, next) => {
+	await Instrument.findByIdAndDelete(req.body.id);
+	res.redirect('/store/instruments');
+});
