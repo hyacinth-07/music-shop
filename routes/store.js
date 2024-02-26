@@ -49,6 +49,12 @@ router.get('/instruments/:id/delete', inst_ctrl.delete_get);
 // delete instrument POST
 router.post('/instruments/:id/delete', inst_ctrl.delete_post);
 
+// update instrument GET
+router.get('/instruments/:id/update', inst_ctrl.update_get);
+
+// update instrument POST
+router.post('/instruments/:id/update', inst_ctrl.update_post);
+
 // CATEGORIES
 
 // display category detail page

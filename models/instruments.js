@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { DateTime } = require('luxon');
 
 const InstrumentSchema = new Schema({
 	name: { type: String, required: true, maxLength: 100 },
@@ -19,6 +20,10 @@ const InstrumentSchema = new Schema({
 
 InstrumentSchema.virtual('url').get(function () {
 	return `/store/instruments/${this._id}`;
+});
+
+InstrumentSchema.virtual('date_form').get(function () {
+	return DateTime.fromJSDate(this.backInStock).toFormat('yyyy-mm-dd');
 });
 
 module.exports = mongoose.model('Instrument', InstrumentSchema);
