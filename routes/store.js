@@ -6,8 +6,15 @@ const router = express.Router();
 const cat_ctrl = require('../controllers/categoryController');
 const type_ctrl = require('../controllers/typeController');
 const inst_ctrl = require('../controllers/instrumentsController');
+const auth_ctrl = require('../controllers/authenticationController');
 
 // ROUTES
+
+// SIGN UP AND SIGN OUT
+
+router.get('/sign-up', auth_ctrl.sign_up);
+
+router.post('/sign-up', auth_ctrl.sign_up_post);
 
 // TYPES
 
