@@ -1,5 +1,6 @@
 const Category = require('../models/category');
 const Instrument = require('../models/instruments');
+const User = require('../models/user');
 
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
@@ -11,6 +12,7 @@ exports.index = asyncHandler(async (req, res, next) => {
 		template: 'index',
 		title: 'A Music Store',
 		cat_list: allCategories,
+		user: User.username,
 	});
 });
 
@@ -32,6 +34,7 @@ exports.detail = asyncHandler(async (req, res, next) => {
 		title: 'Categories Detail',
 		cat: cat,
 		inst: inst,
+		user: User.username,
 	});
 });
 
@@ -39,6 +42,7 @@ exports.create_get = (req, res, next) => {
 	res.render('main', {
 		template: 'cat_create',
 		title: 'Create New Category',
+		user: User.username,
 	});
 };
 
@@ -93,6 +97,7 @@ exports.delete_get = asyncHandler(async (req, res, next) => {
 		title: 'Category Delete',
 		cat: cat,
 		inst: inst,
+		user: User.username,
 	});
 });
 
@@ -108,6 +113,7 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 			title: 'Category Delete',
 			cat: cat,
 			inst: inst,
+			user: User.username,
 		});
 		return;
 	} else {

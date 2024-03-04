@@ -1,5 +1,6 @@
 const Type = require('../models/type');
 const Instrument = require('../models/instruments');
+const User = require('../models/user');
 
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
@@ -11,6 +12,7 @@ exports.list = asyncHandler(async (req, res, next) => {
 		template: 'type_list',
 		title: 'Types of Instruments Available',
 		type_list: allTypes,
+		user: User.username,
 	});
 });
 
@@ -32,6 +34,7 @@ exports.detail = asyncHandler(async (req, res, next) => {
 		title: 'Type Detail',
 		type: type,
 		inst: inst,
+		user: User.username,
 	});
 });
 
@@ -39,6 +42,7 @@ exports.create_get = (req, res, next) => {
 	res.render('main', {
 		template: 'type_create',
 		title: 'Create New Type',
+		user: User.username,
 	});
 };
 
@@ -93,6 +97,7 @@ exports.delete_get = asyncHandler(async (req, res, next) => {
 		title: 'Type Delete',
 		type: type,
 		inst: inst,
+		user: User.username,
 	});
 });
 
@@ -108,6 +113,7 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 			title: 'Type Delete',
 			type: type,
 			inst: inst,
+			user: User.username,
 		});
 		return;
 	} else {

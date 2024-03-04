@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
 // controller modules
 
@@ -15,6 +16,19 @@ const auth_ctrl = require('../controllers/authenticationController');
 router.get('/sign-up', auth_ctrl.sign_up);
 
 router.post('/sign-up', auth_ctrl.sign_up_post);
+
+router.get('/log-in', auth_ctrl.log_in_get);
+
+router.post('/log-in', auth_ctrl.log_in_post);
+
+router.get('/log-out', (req, res, next) => {
+	req.logout((err) => {
+		if (err) {
+			return next(err);
+		}
+		res.redirect('/');
+	});
+});
 
 // TYPES
 

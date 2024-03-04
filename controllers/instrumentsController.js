@@ -1,6 +1,7 @@
 const Instrument = require('../models/instruments');
 const Category = require('../models/category');
 const Type = require('../models/type');
+const User = require('../models/user');
 
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
@@ -12,6 +13,7 @@ exports.list = asyncHandler(async (req, res, next) => {
 		template: 'instruments_list',
 		title: 'Individual Instruments Available',
 		inst_list: allInstruments,
+		user: User.username,
 	});
 });
 
@@ -32,6 +34,7 @@ exports.detail = asyncHandler(async (req, res, next) => {
 		template: 'inst_detail',
 		title: 'Instrument Detail',
 		inst: inst,
+		user: User.username,
 	});
 });
 
@@ -46,6 +49,7 @@ exports.delete_get = asyncHandler(async (req, res, next) => {
 		template: 'inst_delete',
 		title: 'Instrument Delete',
 		inst: inst,
+		user: User.username,
 	});
 });
 
@@ -65,6 +69,7 @@ exports.create_get = asyncHandler(async (req, res, next) => {
 		title: 'Create New Instrument',
 		allCat: allCat,
 		allTypes: allTypes,
+		user: User.username,
 	});
 });
 
@@ -98,6 +103,7 @@ exports.create_post = [
 				title: 'Create New Instrument',
 				inst: inst,
 				errors: errors,
+				user: User.username,
 			});
 		} else {
 			await inst.save();
@@ -131,6 +137,7 @@ exports.update_get = asyncHandler(async (req, res, next) => {
 		inst: inst,
 		allCat: allCat,
 		allType: allType,
+		user: User.username,
 	});
 });
 
@@ -165,6 +172,7 @@ exports.update_post = [
 				title: 'Create New Instrument',
 				inst: inst,
 				errors: errors,
+				user: User.username,
 			});
 		} else {
 			// Data from form is valid. Update the record.

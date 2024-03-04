@@ -32,6 +32,11 @@
 			"
 		>
 			<a href="/store/sign-up">Create Account</a>
+			<% if (user) { %> Welcome <%= user.username %> -
+			<a href="/store/log-out">Log Out</a>
+			<% } else { %>
+			<a href="/store/log-in">Log In</a>
+			<% } %>
 		</div>
 		<div
 			style="

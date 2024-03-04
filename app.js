@@ -74,6 +74,14 @@ passport.deserializeUser(async (id, done) => {
 	}
 });
 
+// custom middleware to get a
+// currentUser variable
+
+app.use((req, res, next) => {
+	res.locals.currentUser = req.user;
+	next();
+});
+
 //////////////////////////////////////////////////
 
 // view engine setup

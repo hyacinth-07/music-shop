@@ -1,10 +1,27 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
+
+exports.log_in_post = (req, res, next) => {
+	passport.authenticate('local', {
+		successRedirect: '/',
+		failureRedirect: '/',
+	});
+};
+
+exports.log_in_get = (req, res, next) => {
+	res.render('main', {
+		template: 'log-in',
+		title: 'Log In Form',
+		user: User.username,
+	});
+};
 
 exports.sign_up = (req, res, next) => {
 	res.render('main', {
 		template: 'sign-up',
 		title: 'Sign Up Form',
+		user: User.username,
 	});
 };
 
