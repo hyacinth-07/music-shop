@@ -13,7 +13,7 @@ exports.list = asyncHandler(async (req, res, next) => {
 		template: 'instruments_list',
 		title: 'Individual Instruments Available',
 		inst_list: allInstruments,
-		user: User.username,
+		user: req.user,
 	});
 });
 
@@ -34,7 +34,7 @@ exports.detail = asyncHandler(async (req, res, next) => {
 		template: 'inst_detail',
 		title: 'Instrument Detail',
 		inst: inst,
-		user: User.username,
+		user: req.user,
 	});
 });
 
@@ -49,7 +49,7 @@ exports.delete_get = asyncHandler(async (req, res, next) => {
 		template: 'inst_delete',
 		title: 'Instrument Delete',
 		inst: inst,
-		user: User.username,
+		user: req.user,
 	});
 });
 
@@ -69,7 +69,7 @@ exports.create_get = asyncHandler(async (req, res, next) => {
 		title: 'Create New Instrument',
 		allCat: allCat,
 		allTypes: allTypes,
-		user: User.username,
+		user: req.user,
 	});
 });
 
@@ -103,7 +103,7 @@ exports.create_post = [
 				title: 'Create New Instrument',
 				inst: inst,
 				errors: errors,
-				user: User.username,
+				user: req.user,
 			});
 		} else {
 			await inst.save();
@@ -137,7 +137,7 @@ exports.update_get = asyncHandler(async (req, res, next) => {
 		inst: inst,
 		allCat: allCat,
 		allType: allType,
-		user: User.username,
+		user: req.user,
 	});
 });
 
@@ -172,7 +172,7 @@ exports.update_post = [
 				title: 'Create New Instrument',
 				inst: inst,
 				errors: errors,
-				user: User.username,
+				user: req.user,
 			});
 		} else {
 			// Data from form is valid. Update the record.

@@ -34,7 +34,7 @@ exports.detail = asyncHandler(async (req, res, next) => {
 		title: 'Categories Detail',
 		cat: cat,
 		inst: inst,
-		user: User.username,
+		user: req.user,
 	});
 });
 
@@ -42,7 +42,7 @@ exports.create_get = (req, res, next) => {
 	res.render('main', {
 		template: 'cat_create',
 		title: 'Create New Category',
-		user: User.username,
+		user: req.user,
 	});
 };
 
@@ -97,7 +97,7 @@ exports.delete_get = asyncHandler(async (req, res, next) => {
 		title: 'Category Delete',
 		cat: cat,
 		inst: inst,
-		user: User.username,
+		user: req.user,
 	});
 });
 
@@ -113,7 +113,7 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 			title: 'Category Delete',
 			cat: cat,
 			inst: inst,
-			user: User.username,
+			user: req.user,
 		});
 		return;
 	} else {

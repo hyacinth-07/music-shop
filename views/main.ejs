@@ -38,6 +38,7 @@
 			<a href="/store/log-in">Log In</a>
 			<% } %>
 		</div>
+		<% if (user) { %>
 		<div
 			style="
 				border: black 1px solid;
@@ -48,10 +49,13 @@
 				width: fit-content;
 			"
 		>
+			<p>You Are Admin</p>
 			<a href="/store/create/category">Create New Category</a>
 			<a href="/store/create/type">Create New Type</a>
 			<a href="/store/create/instrument">Create New Instrument</a>
 		</div>
+
+		<% } %>
 		<div><%- include(template); -%></div>
 	</body>
 </html>
