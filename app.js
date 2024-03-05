@@ -8,6 +8,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const storeRouter = require('./routes/store');
 
+// authentication packages
+
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
+const User = require('./models/user');
+
 var app = express();
 
 // start mongoose and atlas connect
@@ -22,19 +30,11 @@ async function main() {
 	await mongoose.connect(mongoDB);
 }
 
-// authentication packages
-
-const session = require('express-session');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcryptjs');
-const User = require('./models/user');
+// PASSPORT AND SESSION COOKIES
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
-
-// PASSPORT AND SESSION COOKIES
 
 // with hashing
 

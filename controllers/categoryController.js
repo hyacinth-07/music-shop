@@ -12,7 +12,7 @@ exports.index = asyncHandler(async (req, res, next) => {
 		template: 'index',
 		title: 'A Music Store',
 		cat_list: allCategories,
-		user: User.username,
+		user: req.user,
 	});
 });
 

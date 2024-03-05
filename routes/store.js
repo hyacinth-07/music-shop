@@ -19,7 +19,13 @@ router.post('/sign-up', auth_ctrl.sign_up_post);
 
 router.get('/log-in', auth_ctrl.log_in_get);
 
-router.post('/log-in', auth_ctrl.log_in_post);
+router.post(
+	'/log-in',
+	passport.authenticate('local', {
+		successRedirect: '/',
+		failureRedirect: '/store/sign-up',
+	})
+);
 
 router.get('/log-out', (req, res, next) => {
 	req.logout((err) => {
@@ -27,6 +33,7 @@ router.get('/log-out', (req, res, next) => {
 			return next(err);
 		}
 		res.redirect('/');
+		console.log('You Have Logged Out!');
 	});
 });
 
